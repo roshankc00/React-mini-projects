@@ -1,6 +1,10 @@
-import React from 'react'
+import { useEffect } from "react";
 
-const User = () => {
+const User = (props) => {
+  useEffect(()=>{
+
+    console.log(props.user);
+  })
   return (
     <div className='container'>User</div>
   )
