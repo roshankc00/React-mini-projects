@@ -1,5 +1,5 @@
-import Product from "./components/Product";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Product from './Pages/Product';
 const App = () => {
   return <div>
     <Product/>
