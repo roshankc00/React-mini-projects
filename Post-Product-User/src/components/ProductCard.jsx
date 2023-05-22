@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 const ProductCard = (props) => {
   return (
+    
 <Card style={{ width: '18rem' }} className='col-4'>
       <Card.Img variant="top" src={props.product.thumbnail}/>
       <Card.Body>

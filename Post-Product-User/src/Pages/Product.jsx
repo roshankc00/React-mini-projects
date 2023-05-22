@@ -9,6 +9,8 @@ const Product = (props) => {
 
   return (
     <div className='container '>
+    <h1 className="text-center my-5"> Your Product</h1>
+
       
         <div className="row ms-5">
 

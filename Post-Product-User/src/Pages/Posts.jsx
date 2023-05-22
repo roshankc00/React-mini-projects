@@ -8,6 +8,8 @@ const Posts = (props) => {
   return (
     <div>
         <div className="container">
+    <h1 className="text-center my-5">Users Posts</h1>
+
             <div className="row">
 
 

@@ -18,17 +18,14 @@ function UncontrolledExample() {
          if(key==="users"){
              let data=res.data.users
              setuser(data)
-             console.log(data);
             }
             if(key==="products"){
                 let data=res.data.products
                 setproduct(data)
-                console.log(data);
             }
             if(key==="posts"){
                 let data=res.data.posts
                 setpost(data)
-                console.log(data);
             }
         })
     },[key])
