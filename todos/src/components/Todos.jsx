@@ -3,10 +3,32 @@ import AutoDeleteIcon from '@mui/icons-material/AutoDelete';
 import DoneIcon from '@mui/icons-material/Done';
 import CreateIcon from '@mui/icons-material/Create';
 import { Button } from '@mui/material';
+import Modal from 'react-bootstrap/Modal';
 const Todos = () => {
+    const [show, setShow] = useState(false);
+    const handleClose = () => {
+        setShow(false);
+        let index=localStorage.getItem("index")
+        console.log(index)
+        let newArr=[]
+        arr.map((el,ind)=>{
+            // console.log(update)
+            // console.log(el)
+            if (index==ind){
+                console.log("nepal")
+                newArr.push(update) 
+            }
+            else{
+                newArr.push(el)
+            }
+          
+        })
+        setarr(newArr)
+    }
     let [todo, settodo] = useState("")
     let [arr, setarr] = useState([])
     let [complete, setcomplete] = useState(false)
+    const [update, setupdate] = useState("")
     let submitHandler=(e)=>{
         e.preventDefault()
         console.log("thanks");
@@ -35,10 +57,10 @@ const Todos = () => {
       </div>
       <div className="todos-list m-5">
       <ul className="list-group">
-        {arr && arr.map((el)=>{
+        {arr && arr.map((el,index)=>{
             return(
 
-                <li key={el} className="list-group-item mt-2 d-flex justify-content-between">
+                <li key={index} className="list-group-item mt-2 d-flex justify-content-between">
     <div>
     <Button className='border-none' onClick={handleComplete}>
   <DoneIcon className='mx-2'/>
@@ -46,11 +68,24 @@ const Todos = () => {
   <span className={`ms-2 ${complete?"text-decoration-line-through":""}`}> {el} </span>
     </div>
   <div>
-    <Button className='border-none'>
-    <CreateIcon className='ms-3'/>
+    <Button type='button' className='border-none'>
+    <CreateIcon data-bs-toggle="modal" data-bs-target="#exampleModal" className='ms-3' onClick={()=>{
+        setShow(true)
+        localStorage.setItem("value",el)
+        setupdate(localStorage.getItem("value"))
+        localStorage.setItem("index",index)
+       
+    }}/>
     </Button>
-    <Button className='border-none'>
-  <AutoDeleteIcon className='ms-3'/>
+    <Button  type='button' className='border-none'>
+  <AutoDeleteIcon  className='ms-3' onClick={()=>{
+    console.log("delete me ");
+    console.log(index);
+    let newArr=arr.filter((el,ind)=>{
+        return index!=ind
+    })
+    setarr(newArr)
+  }}/>
     </Button>
   </div>
     </li>
@@ -58,10 +93,23 @@ const Todos = () => {
     })
       }
 </ul>
-
-       
-
       </div>
+      {/* model */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body><input type='text' className='form-control' value={update} onChange={(e)=>{
+            setupdate(e.target.value)
+        }} /></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            close
+          </Button>
+         
+        </Modal.Footer>
+      </Modal>
+      {/* model */}
     </div>
   )
 }
