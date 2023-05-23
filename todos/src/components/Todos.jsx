@@ -5,15 +5,28 @@ import CreateIcon from '@mui/icons-material/Create';
 import { Button } from '@mui/material';
 import Modal from 'react-bootstrap/Modal';
 const Todos = () => {
+    // for showing and hiding the model state
     const [show, setShow] = useState(false);
+
+    // for managing the single input todo
+    let [todo, settodo] = useState("")
+
+    // for managing the todo array
+    let [arr, setarr] = useState([])
+
+    // for maganing the textdecoration
+    let [complete, setcomplete] = useState(false)
+
+    // for updating the upadate todo
+    const [update, setupdate] = useState("")
+    
+    // logic for the update the todos
     const handleClose = () => {
         setShow(false);
         let index=localStorage.getItem("index")
         console.log(index)
         let newArr=[]
         arr.map((el,ind)=>{
-            // console.log(update)
-            // console.log(el)
             if (index==ind){
                 console.log("nepal")
                 newArr.push(update) 
@@ -25,10 +38,10 @@ const Todos = () => {
         })
         setarr(newArr)
     }
-    let [todo, settodo] = useState("")
-    let [arr, setarr] = useState([])
-    let [complete, setcomplete] = useState(false)
-    const [update, setupdate] = useState("")
+
+
+
+//  submi the todos handler 
     let submitHandler=(e)=>{
         e.preventDefault()
         console.log("thanks");
@@ -36,13 +49,19 @@ const Todos = () => {
         setarr([...arr,item])
         
     }
+    // onchange halder in todo input 
     const changeHandler=(e)=>{
         settodo(e.target.value)
     }
+
+    // complete the task handler 
     const handleComplete=()=>{
       setcomplete(!complete)
       console.log(complete);
     }
+
+
+
   return (
            <div className="container mt-4">
       <h1 className="text-center my-5">Your Todos </h1>
