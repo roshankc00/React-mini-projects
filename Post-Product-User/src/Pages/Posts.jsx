@@ -15,6 +15,7 @@ const Posts = (props) => {
 
         {
             props.post.map((el)=>{
+              console.log(el);
                 return (
                     <PostCard key={el.id} post={el}/>
                     )
