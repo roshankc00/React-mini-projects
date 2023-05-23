@@ -9,10 +9,12 @@ import Posts from '../Pages/Posts';
 // import Sonnet from '../../components/Sonnet'; 
 
 function UncontrolledExample() {
+
     const [key, setkey] = useState("products")
     const [post, setpost] = useState([])
     const [user, setuser] = useState([])
     const [product, setproduct] = useState([])
+   
    useEffect(()=>{
      getData(key).then((res)=>{
          if(key==="users"){
@@ -39,9 +41,8 @@ function UncontrolledExample() {
       className="mb-3 "
     >
         {product&&
-
             <Tab eventKey="products" className='fs-6 p-5' title="Products">
-        <Product product={product}/>
+        <Product product={product} />
       </Tab>
     }
       {user&&
